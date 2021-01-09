@@ -6,16 +6,12 @@ import * as data from "../../../assets/mock_data_(5).json";
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  listData: Array<{
-    id: number, first_name: string,
-    last_name: string, favourite_movie: string,
-    likes_popcorn: boolean, gender: string
-  }>;
+  listData: any = (data as any).default;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.listData = data.default;
+
     console.log(this.listData)
   }
 

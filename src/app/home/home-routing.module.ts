@@ -8,10 +8,9 @@ import { EmployeesComponent } from './employees/employees.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '', component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: '', component: HomeComponent, },
       {
         path: 'users',
         component: UsersComponent,
