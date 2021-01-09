@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "afs-jwd-assessment"
+  "defaultProject": "afs-jwd-assessment",
+  "cli": {
+    "analytics": "d2d51e8a-6d7d-42ca-ad09-fbf58b9b6212"
+  }
 }
