@@ -18,6 +18,11 @@ import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 
+import Amplify from 'aws-amplify';
+import awsconfig from '../aws-exports';
+
+Amplify.configure(awsconfig);
+
 registerLocaleData(en);
 
 @NgModule({
@@ -34,7 +39,7 @@ registerLocaleData(en);
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
-    AmplifyUIAngularModule
+    AmplifyUIAngularModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
