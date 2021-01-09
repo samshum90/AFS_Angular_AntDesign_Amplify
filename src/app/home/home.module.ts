@@ -9,7 +9,7 @@ import { UsersComponent } from './users/users.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzTableModule, NzTableSortOrder } from 'ng-zorro-antd/table';
 
 @NgModule({
   declarations: [

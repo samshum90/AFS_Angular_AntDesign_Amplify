@@ -5,11 +5,11 @@
 <nz-table #basicTable [nzData]="listData">
     <thead>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Favorite Movie</th>
-            <th>Likes Popcorn</th>
-            <th>Gender</th>
+            <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+                [nzSortDirections]="column.sortDirections" [nzFilterMultiple]="column.filterMultiple"
+                [nzFilters]="column.listOfFilter" [nzFilterFn]="column.filterFn">
+                {{ column.name }}
+            </th>
         </tr>
     </thead>
     <tbody>
