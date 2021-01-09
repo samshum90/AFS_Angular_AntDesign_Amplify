@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as data from "../../../assets/mock_data_(5).json";
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { User } from 'src/app/models/user';
+import { FormatsService } from 'src/app/services/formats.service';
 
 
 interface ColumnItem {
@@ -20,7 +21,7 @@ interface ColumnItem {
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  listData: any = (data as any).default;
+  listData: any = (data as any).default
 
   listOfColumns: ColumnItem[] = [
     {
@@ -56,11 +57,10 @@ export class UsersComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  constructor(private formatService: FormatsService) { }
 
   ngOnInit(): void {
 
-    console.log(this.listData)
   }
 
 }

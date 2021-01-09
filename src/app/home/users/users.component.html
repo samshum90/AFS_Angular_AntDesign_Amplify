@@ -17,7 +17,7 @@
             <td>{{ user.first_name }}</td>
             <td>{{ user.last_name }}</td>
             <td>{{ user.favourite_movie }}</td>
-            <td>{{ user.likes_popcorn }}</td>
+            <td>{{ formatService.convertBoolean(user.likes_popcorn) }}</td>
             <td>{{ user.gender }}</td>
         </tr>
     </tbody>
