@@ -9,7 +9,8 @@ import { UsersComponent } from './users/users.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { NzTableModule, NzTableSortOrder } from 'ng-zorro-antd/table';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzButtonModule } from 'ng-zorro-antd/button';;
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NzTableModule, NzTableSortOrder } from 'ng-zorro-antd/table';
     NzIconModule,
     NzMenuModule,
     NzTableModule,
+    NzButtonModule,
   ],
   exports: [
     UsersComponent,

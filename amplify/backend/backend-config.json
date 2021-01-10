@@ -6,5 +6,22 @@
       "dependsOn": [],
       "customAuth": false
     }
+  },
+  "api": {
+    "afsjwd": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authafsjwd08c7874e08c7874e"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        }
+      }
+    }
   }
 }

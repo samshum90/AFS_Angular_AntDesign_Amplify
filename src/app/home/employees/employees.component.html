@@ -1,1 +1,43 @@
-<p>employees works!</p>
+<ul>
+    <!-- <li *ngFor="let todo of toDoList">{{ todo.name }}</li>
+</ul>
+
+<nz-table #basicTable [nzData]="toDoList">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let todo of basicTable.data">
+            <td>{{ todo.name }}</td>
+            <td>{{ todo.description }}</td>
+        </tr>
+    </tbody>
+</nz-table>
+<button nz-button nzType="primary" (click)="createTodo()">Add Todo</button> -->
+
+    <nz-table #basicTable [nzData]="userList">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Favorite Movie</th>
+                <th>Likes Popcorn</th>
+                <th>Gender</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of basicTable.data">
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.favourite_movie }}</td>
+                <td>{{ formatService.convertBoolean(user.likes_popcorn) }}</td>
+                <td>{{ user.gender }}</td>
+            </tr>
+        </tbody>
+
+    </nz-table>

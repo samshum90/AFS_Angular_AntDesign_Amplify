@@ -5,7 +5,7 @@ import { User } from 'src/app/models/user';
 import { FormatsService } from 'src/app/services/formats.service';
 
 
-interface ColumnItem {
+export interface ColumnItem {
   name: string;
   sortOrder?: NzTableSortOrder | null;
   sortFn?: NzTableSortFn | null;
