@@ -37,7 +37,10 @@
                 <td>{{ user.favourite_movie }}</td>
                 <td>{{ formatService.convertBoolean(user.likes_popcorn) }}</td>
                 <td>{{ user.gender }}</td>
+                <td><button nz-button nzType="primary" (click)="deleteUser(user.id)">Delete</button></td>
             </tr>
         </tbody>
 
     </nz-table>
+
+    <button nz-button nzType="primary" (click)="createUser()">Add User</button>
