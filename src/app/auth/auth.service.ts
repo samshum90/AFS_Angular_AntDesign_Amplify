@@ -8,18 +8,15 @@ import { from } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  public loggedIn: BehaviorSubject<boolean>;
-  constructor() { this.loggedIn = new BehaviorSubject<boolean>(false); }
+  constructor() { }
 
   public isAuthenticated(): Observable<boolean> {
     return from(Auth.currentAuthenticatedUser())
       .pipe(
         map(result => {
-          this.loggedIn.next(true);
           return true;
         }),
         catchError(error => {
-          this.loggedIn.next(false);
           return of(false);
         })
       );

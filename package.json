@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~11.0.3",
     "@angular/router": "~11.0.3",
     "@aws-amplify/ui-angular": "^0.4.17",
+    "@types/graphql": "^14.5.0",
     "aws-amplify": "^3.3.14",
     "ng-zorro-antd": "^11.0.1",
     "rxjs": "~6.6.0",
