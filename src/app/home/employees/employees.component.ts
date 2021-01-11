@@ -8,6 +8,7 @@ import { Todo } from 'src/app/models/todo';
 import { User } from 'src/app/models/user';
 import { FormatsService } from 'src/app/services/formats.service';
 import { from, Observable, Subscription } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-employees',
@@ -21,7 +22,18 @@ export class EmployeesComponent implements OnInit {
   user = { "first_name": "Bastian", "last_name": "Chipchase", "favourite_movie": "Method to the Madness of Jerry Lewis", "likes_popcorn": true, "gender": "Male" };
   userList: User[] = [];
   subscription: Subscription;
-  constructor(private formatService: FormatsService) { }
+  showModal: boolean = false;
+  employeeForm: FormGroup;
+
+  constructor(private formatService: FormatsService, private fb: FormBuilder) {
+    this.employeeForm = this.fb.group({
+      first_name: ['', [Validators.required],],
+      last_name: ['', [Validators.required]],
+      favourite_movie: [''],
+      likes_popcorn: [''],
+      gender: ['', [Validators.required]]
+    });
+  }
 
   ngOnInit(): void {
     // this.getToDos();
@@ -52,14 +64,28 @@ export class EmployeesComponent implements OnInit {
       .then((list: any) => this.userList = list.data.listUsers.items)
   }
 
-  async createUser() {
-    await API.graphql(graphqlOperation(createUser, { input: this.user }));
-    console.log(this.userList);
-  }
+  // async createUser() {
+  //   await API.graphql(graphqlOperation(createUser, { input: this.user }));
+  // }
 
   async deleteUser(userId: number) {
     await API.graphql(graphqlOperation(deleteUser, { input: { id: userId } }));
   }
+
+  async submitForm() {
+    await API.graphql(graphqlOperation(createUser, { input: this.employeeForm.value }));
+    this.handleCancel()
+    this.employeeForm.reset()
+  }
+
+  openModal(): void {
+    this.showModal = !this.showModal;
+  }
+
+  handleCancel(): void {
+    this.showModal = false;
+  }
+
 
   //  === TODO CODE ===
   // async getToDos() {

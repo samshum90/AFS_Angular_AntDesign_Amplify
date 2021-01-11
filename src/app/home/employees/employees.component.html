@@ -37,10 +37,68 @@
                 <td>{{ user.favourite_movie }}</td>
                 <td>{{ formatService.convertBoolean(user.likes_popcorn) }}</td>
                 <td>{{ user.gender }}</td>
-                <td><button nz-button nzType="primary" (click)="deleteUser(user.id)">Delete</button></td>
+                <td><a nz-button nzType="link" (click)="deleteUser(user.id)">Delete</a></td>
             </tr>
         </tbody>
 
     </nz-table>
 
-    <button nz-button nzType="primary" (click)="createUser()">Add User</button>
+    <!-- <button nz-button nzType="primary" (click)="createUser()">Add Employee</button> -->
+    <button nz-button nzType="primary" (click)="openModal()">Add Employee</button>
+
+    <nz-modal [(nzVisible)]="showModal" nzTitle="Add An Employee" (nzOnCancel)="handleCancel()" (nzOnOk)="submitForm()">
+        <ng-container *nzModalContent>
+            <form nz-form [formGroup]="employeeForm">
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="7" nzRequired>First Name</nz-form-label>
+                    <nz-form-control [nzSpan]="12" nzHasFeedback nzValidatingTip="Validating..."
+                        [nzErrorTip]="userErrorTpl">
+                        <input nz-input formControlName="first_name" placeholder="Please input your first name!" />
+                        <ng-template #userErrorTpl let-control>
+                            <ng-container *ngIf="control.hasError('required')">
+                                Please input your first name!
+                            </ng-container>
+                        </ng-template>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="7" nzRequired>Last Name</nz-form-label>
+                    <nz-form-control [nzSpan]="12" nzHasFeedback nzValidatingTip="Validating..."
+                        [nzErrorTip]="userErrorTpl">
+                        <input nz-input formControlName="last_name" placeholder="Please input your last name!" />
+                        <ng-template #userErrorTpl let-control>
+                            <ng-container *ngIf="control.hasError('required')">
+                                Please input your last name!
+                            </ng-container>
+                        </ng-template>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="7">Favorite Movie</nz-form-label>
+                    <nz-form-control [nzSpan]="12">
+                        <input nz-input formControlName="favourite_movie" placeholder="Input your favorite movie"
+                            type="text" />
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="7">Do you like popcorn?</nz-form-label>
+                    <nz-form-control>
+                        <nz-radio-group formControlName="likes_popcorn">
+                            <label nz-radio [nzValue]=true>Yes</label>
+                            <label nz-radio [nzValue]=false>No</label>
+                        </nz-radio-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-label [nzSpan]="7" nzRequired>Gender</nz-form-label>
+                    <nz-form-control>
+                        <nz-radio-group formControlName="gender">
+                            <label nz-radio nzValue="Male">Male</label>
+                            <label nz-radio nzValue="Female">Female</label>
+                            <label nz-radio nzValue="Other">Other</label>
+                        </nz-radio-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+        </ng-container>
+    </nz-modal>
